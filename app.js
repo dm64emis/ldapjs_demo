@@ -6,7 +6,7 @@ const port = 4000; // Open localhost:4000 in a browser to view
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, VS Code!');
+  res.end('Hello, VS Code from WSL!!');
 });
 
 server.listen(port, hostname, () => {
