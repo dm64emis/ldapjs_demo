@@ -7,9 +7,11 @@
 # https://github.com/microsoft/vscode-dev-containers/tree/v0.122.1/containers/javascript-node-14/.devcontainer/Dockerfile
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-14
 
-# ** [Optional] Uncomment this section to install additional packages. **
-#
-# RUN apt-get update \
-#     && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+# Avoid warnings by switching to noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update -y
+RUN apt-get -y install --no-install-recommends curl ldap-utils
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+RUN npm install ldapjs
 
